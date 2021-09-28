@@ -1,19 +1,3 @@
 ﻿  testStack.cpp
-D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(104,1): error C2535: 'void custom::stack<T>::push(const T &)': member function already defined or declared
-D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(97): message : see declaration of 'custom::stack<T>::push'
-D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(148): message : see reference to class template instantiation 'custom::stack<T>' being compiled
-D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(111,1): error C2535: 'void custom::stack<T>::push(T &&)': member function already defined or declared
-D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(101): message : see declaration of 'custom::stack<T>::push'
-D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(104,1): error C2535: 'void custom::stack<Spy>::push(const T &)': member function already defined or declared
-          with
-          [
-              T=Spy
-          ]
-D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(97): message : see declaration of 'custom::stack<Spy>::push'
-D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\testStack.h(93): message : see reference to class template instantiation 'custom::stack<Spy>' being compiled
-D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(111,1): error C2535: 'void custom::stack<Spy>::push(T &&)': member function already defined or declared
-          with
-          [
-              T=Spy
-          ]
-D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(101): message : see declaration of 'custom::stack<Spy>::push'
+  LINK : D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\x64\Debug\LabStack.exe not found or not built by the last incremental link; performing full link
+  LabStack.vcxproj -> D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\x64\Debug\LabStack.exe

@@ -104,30 +104,16 @@ namespace custom
         void push(T&& t) {
             container.push_back(t);
         }
-   void push(const T&  t) {
-        // PDF PG 335
-       
-       container.push_back(t);
-           
 
-   }
-   void push(      T&& t) {
-       container.push_back(t);
-   }
-
-        //
-        // Remove -- Jon
-        //
-
-   void pop()
-   {
-      // PDF PG 336
-       /*stack.pop()
-           IF not empty()
-           --numElements*/
-       if (!empty())
-           container[size() - 1] = NULL;
-   }
+       void pop()
+       {
+          // PDF PG 336
+           /*stack.pop()
+               IF not empty()
+               --numElements*/
+           if (!empty())
+               container[size() - 1] = NULL;
+       }
 
         //
         // Status -- Steve
