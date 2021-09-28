@@ -15,7 +15,7 @@
  *    This will contain the class definition of:
  *       stack             : similar to std::stack
  * Author
- *    <your names here>
+ *    Alexander Dohms, Steve Costigan, Jonathan Colwell, Corbin Layton
  ************************************************************************/
 
 #pragma once
