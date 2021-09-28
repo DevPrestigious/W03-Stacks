@@ -85,7 +85,9 @@ public:
              // PDF PG 335
              /*ASSERT not empty()
                  RETURN array[size() – 1]*/
-             return *(new T);
+             assert(!empty());
+                 return container[size() - 1];
+             
          }
    const T& top() const { return *(new T); }
 
@@ -95,10 +97,14 @@ public:
 
    void push(const T&  t) {
         // PDF PG 335
-       /*IF numElements < N
-           array[numElements++] <- t*/
+       
+       container.push_back(t);
+           
+
    }
-   void push(      T&& t) {  }
+   void push(      T&& t) {
+       container.push_back(t);
+   }
 
    //
    // Remove -- Jon
