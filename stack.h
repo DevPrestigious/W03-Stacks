@@ -40,12 +40,12 @@ public:
    // Construct
    //
 
-   stack()                            { container.resize(7); }
-   stack(const stack <T> &  rhs)      { container.resize(7); }
-   stack(      stack <T> && rhs)      { container.resize(7); }
-   stack(const std::vector<T> &  rhs) { container.resize(7); }
-   stack(      std::vector<T> && rhs) { container.resize(7); }
-   ~stack()                           {                      }
+   stack()                            { container.resize(7); } // -- Corbin PDF PG 333 {  numElements <- 0 }                 DEFAULT CONSTRUCTOR
+   stack(const stack <T> &  rhs)      { container.resize(7); } // -- Corbin PDF PG 333 {  *this <- rhs }                     COPY CONSTRUCTOR
+   stack(      stack <T> && rhs)      { container.resize(7); } // -- Jon    PDF PG 333 {  *this <- move(rhs) }               MOVE CONSTRUCTOR
+   stack(const std::vector<T> &  rhs) { container.resize(7); } // -- Jon    PDF PG 333 {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
+   stack(      std::vector<T> && rhs) { container.resize(7); } // -- Alex   PDF PG 333 {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
+   ~stack()                           {                      } // -- Steve  Don't know                                       DECONSTRUCTOR
 
    //
    // Assign  -- Corbin
@@ -72,6 +72,9 @@ public:
         /*FOR i < 0 … N
            swap(array[i], rhs.array[i])
            swap(numElements, rhs.numElements) */
+       for (int i = 0; i < size(); i++) {
+           swap()
+        }
    }
 
    //
@@ -118,7 +121,6 @@ public:
    }
    bool empty   () const {
        // PDF PG 336
-       /*RETURN size() = 0 ? TRUE else FALSE*/
        return size() > 0 ? false : true;
    }
    
