@@ -40,12 +40,12 @@ namespace custom
         // Construct
         //
 
-        stack() { container.resize(7); } // -- Corbin PDF PG 333 {  numElements <- 0 }                 DEFAULT CONSTRUCTOR
-        stack(const stack <T>& rhs) { container.resize(7); } // -- Corbin PDF PG 333 {  *this <- rhs }                     COPY CONSTRUCTOR
-        stack(stack <T>&& rhs) { container.resize(7); } // -- Jon    PDF PG 333 {  *this <- move(rhs) }               MOVE CONSTRUCTOR
-        stack(const std::vector<T>& rhs) { container.resize(7); } // -- Jon    PDF PG 333 {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
-        stack(std::vector<T>&& rhs) { container.resize(7); } // -- Alex   PDF PG 333 {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
-        ~stack() {                      } // -- Steve  Don't know                                       DECONSTRUCTOR
+        stack() { container.resize(7); }                            // -- Corbin PDF PG 333 {  numElements <- 0 }                 DEFAULT CONSTRUCTOR
+        stack(const stack <T>& rhs) { container.resize(7); }        // -- Corbin PDF PG 333 {  *this <- rhs }                     COPY CONSTRUCTOR
+        stack(stack <T>&& rhs) { container.resize(7); }             // -- Jon    PDF PG 333 {  *this <- move(rhs) }               MOVE CONSTRUCTOR
+        stack(const std::vector<T>& rhs) { container.resize(7); }   // -- Jon    PDF PG 333 {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
+        stack(std::vector<T>&& rhs) { container.resize(7); }        // -- Alex   PDF PG 333 {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
+        ~stack() {                      }                           // -- Steve  Don't know                                       DECONSTRUCTOR
 
         //
         // Assign  -- Corbin
