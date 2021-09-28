@@ -119,7 +119,7 @@ public:
    bool empty   () const {
        // PDF PG 336
        /*RETURN size() = 0 ? TRUE else FALSE*/
-       return true;
+       return size() > 0 ? false : true;
    }
    
 #ifdef DEBUG // make this visible to the unit tests
