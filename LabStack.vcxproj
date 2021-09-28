@@ -28,6 +28,9 @@
     <ClInclude Include="testStack.h" />
     <ClInclude Include="unitTest.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
