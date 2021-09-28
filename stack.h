@@ -72,9 +72,9 @@ public:
         /*FOR i < 0 … N
            swap(array[i], rhs.array[i])
            swap(numElements, rhs.numElements) */
-       for (int i = 0; i < size(); i++) {
-           swap()
-        }
+       /*for (int i = 0; i < size(); i++) {
+           swap();
+       }*/
    }
 
    //
@@ -110,6 +110,8 @@ public:
        /*stack.pop()
            IF not empty()
            --numElements*/
+       if (!empty())
+           container[size() - 1] = NULL;
    }
 
    //
