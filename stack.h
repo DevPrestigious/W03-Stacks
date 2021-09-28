@@ -36,9 +36,9 @@ class stack
 {
 public:
   
-   // 
+   //
    // Construct
-   // 
+   //
 
    stack()                            { container.resize(7); }
    stack(const stack <T> &  rhs)      { container.resize(7); }
@@ -48,50 +48,79 @@ public:
    ~stack()                           {                      }
 
    //
-   // Assign
+   // Assign  -- Corbin
    //
 
    stack <T> & operator = (const stack <T> & rhs)
    {
+       // COPY ASSIGNMENT - PDF PG 334
+       /*FOR i < 0 … rhs.numElements
+           array[i] <- rhs.array[i]
+           numElements <- rhs.numElements*/
       return *this;
    }
    stack <T>& operator = (stack <T> && rhs)
    {
+       // MOVE ASSIGNMENT - PDF PG 334
+       /* container <- move(rhs.container)*/
+
       return *this;
    }
-   void swap(stack <T>& rhs)
+   void swap(stack <T>& rhs) // -- Steve
    {
-
+       // MOVE ASSIGNMENT - PDF PG 334
+        /*FOR i < 0 … N
+           swap(array[i], rhs.array[i])
+           swap(numElements, rhs.numElements) */
    }
 
-   // 
-   // Access
+   //
+   // Access -- Jon
    //
 
-         T& top()       { return *(new T); }
+         T& top() {
+             // PDF PG 335
+             /*ASSERT not empty()
+                 RETURN array[size() – 1]*/
+             return *(new T);
+         }
    const T& top() const { return *(new T); }
 
-   // 
-   // Insert
-   // 
+   //
+   // Insert -- Jon
+   //
 
-   void push(const T&  t) {  }
+   void push(const T&  t) {
+        // PDF PG 335
+       /*IF numElements < N
+           array[numElements++] <- t*/
+   }
    void push(      T&& t) {  }
 
    //
-   // Remove
+   // Remove -- Jon
    //
 
-   void pop() 
-   { 
-      
+   void pop()
+   {
+      // PDF PG 336
+       /*stack.pop()
+           IF not empty()
+           --numElements*/
    }
 
    //
-   // Status
+   // Status -- Steve
    //
-   size_t  size () const { return 99;  }
-   bool empty   () const { return true; }
+   size_t  size () const {
+       // PDF PG 336
+       return container.size();
+   }
+   bool empty   () const {
+       // PDF PG 336
+       /*RETURN size() = 0 ? TRUE else FALSE*/
+       return true;
+   }
    
 #ifdef DEBUG // make this visible to the unit tests
 public:
