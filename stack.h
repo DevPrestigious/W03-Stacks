@@ -42,7 +42,7 @@ namespace custom
 
                                                                     //////////////////////////////////////////////////////////////////////////////////////////
                                                                     // !!!! I'm asking about the numElements usage in slack, will update if this changes !!!!
-        stack() { container.resize(7); }                            // -- Corbin PDF PG 333 {  numElements <- 0 }                 DEFAULT CONSTRUCTOR
+        stack() { container.resize(0); }                            // -- Alexander PDF PG 333 {  numElements <- 0 }                 DEFAULT CONSTRUCTOR
         stack(const stack <T>& rhs) { container.resize(7); }        // -- Corbin PDF PG 333 {  *this <- rhs }                     COPY CONSTRUCTOR
         stack(stack <T>&& rhs) { container.resize(7); }             // -- Jon    PDF PG 333 {  *this <- move(rhs) }               MOVE CONSTRUCTOR
         stack(const std::vector<T>& rhs) { container.resize(7); }   // -- Jon    PDF PG 333 {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
