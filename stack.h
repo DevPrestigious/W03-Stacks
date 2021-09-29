@@ -40,26 +40,39 @@ namespace custom
         // Construct
         //
 
-                                                                    //////////////////////////////////////////////////////////////////////////////////////////
-                                                                    // !!!! I'm asking about the numElements usage in slack, will update if this changes !!!!
-        stack() { container.resize(0); }                            // -- Alexander PDF PG 333 {  numElements <- 0 }                 DEFAULT CONSTRUCTOR
-        stack(const stack <T>& rhs) { container.resize(7); }        // -- Corbin PDF PG 333 {  *this <- rhs }                     COPY CONSTRUCTOR
-        stack(stack <T>&& rhs) { container.resize(7); }             // -- Jon    PDF PG 333 {  *this <- move(rhs) }               MOVE CONSTRUCTOR
-        stack(const std::vector<T>& rhs) { container.resize(7); }   // -- Jon    PDF PG 333 {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
-        stack(std::vector<T>&& rhs) { container = move(rhs.container); }        // -- Alex   PDF PG 333 {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
-        ~stack() {                      }                           // -- Steve  Don't know                                       DECONSTRUCTOR
-                                                                    //////////////////////////////////////////////////////////////////////////////////////////
+                                                                            //////////////////////////////////////////////////////////////////////////////////////////
+        stack() { container.resize(0); }                                    // -- Alexander PDF PG 333  {  numElements <- 0 }                 DEFAULT CONSTRUCTOR
+        stack(const stack <T>& rhs) { container.resize(7); }                // -- Corbin PDF PG 333     {  *this <- rhs }                     COPY CONSTRUCTOR
+        stack(stack <T>&& rhs) { container.resize(7); }                     // -- Jon    PDF PG 333     {  *this <- move(rhs) }               MOVE CONSTRUCTOR
+        stack(const std::vector<T>& rhs) { container.resize(7); }           // -- Jon    PDF PG 333     {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
+        stack(std::vector<T>&& rhs) { container = move(rhs.container); }    // -- Alex   PDF PG 333     {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
+        ~stack() {                      }                                   // -- Steve  Don't know                                       DECONSTRUCTOR
+                                                                            //////////////////////////////////////////////////////////////////////////////////////////
 
         //
         // Assign  -- Corbin
         //
 
-        stack <T>& operator = (const stack <T>& rhs)
+        stack <T>& operator = (const stack <T>& rhs) // Steve: trying to get it going for swap, but ran into issues.
         {
             // COPY ASSIGNMENT - PDF PG 334
             /*FOR i < 0 … rhs.numElements
                 array[i] <- rhs.array[i]
                 numElements <- rhs.numElements*/
+
+            /*for (int i = 0; i < size(); i++) {
+                container.pop_back();
+            }
+            container = &rhs.container;*/
+            //size_t max = (rhs.container.size() > container.size() ? rhs.container.size() : container.size());
+
+            //for (int i = 0; i < rhs.container.size()-1; i++) {
+            //    container.push_back(&rhs.container[size()-1]);
+            //    rhs.container.pop_back();
+            //    //push(rhs.container[i]);
+            //    //container[i] = rhs.container[i];
+            //}
+
             return *this;
         }
         stack <T>& operator = (stack <T>&& rhs)
@@ -75,9 +88,16 @@ namespace custom
              /*FOR i < 0 … N
                 swap(array[i], rhs.array[i])
                 swap(numElements, rhs.numElements) */
-                /*for (int i = 0; i < size(); i++) {
-                    swap();
-                }*/
+
+            /*T tempdata = container;
+            rhs.container = this.container;
+            this.container = tempdata;*/
+            /*int i = 0;
+            for (T item : rhs)
+            {
+                tempdata[i++] = item;
+            }*/
+            
         }
 
         //
@@ -88,10 +108,9 @@ namespace custom
             // PDF PG 335
             /*ASSERT not empty()
                 RETURN array[size() – 1]*/
-            assert(!empty());
             return container[size() - 1];
         }
-        const T& top() const { return *(new T); }
+        const T& top() const { return container[size() - 1]; }
 
         //
         // Insert -- Jon
@@ -101,7 +120,7 @@ namespace custom
             // PDF PG 335
             container.push_back(t);
         }
-        void push(T&& t) {
+        void push(T&& t) { // THIS ONE LOOKS LIKE A MOVE PUSH!!!! Just now noticing....
             container.push_back(t);
         }
 
@@ -135,7 +154,7 @@ namespace custom
 
         
         std::vector<T> container;  // underlying container
-        int numElements = sizeof(container);
+        //int numElements = sizeof(container); // Can't use
     };
 
 

@@ -1,2 +1,2 @@
-D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\x64\Debug\LabStack.exe
 C:\Users\Jonat\Documents\Classes Fall 2021\CSE 232\Week 03 Stacks\x64\Debug\LabStack.exe
+D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\x64\Debug\LabStack.exe
