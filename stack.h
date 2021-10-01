@@ -49,7 +49,7 @@ namespace custom
         ~stack() { for (int i = 0; i < size(); i++) pop(); }                    // -- Seemingly irrelevant.                                      DECONSTRUCTOR
                                                                                 //////////////////////////////////////////////////////////////////////////////////////////
         //
-        // Assign  -- Corbin
+        // Assign
         //
 
         stack <T>& operator = (const stack <T>& rhs) 
@@ -58,11 +58,8 @@ namespace custom
             /*FOR i < 0 … rhs.numElements
                 array[i] <- rhs.array[i]
                 numElements <- rhs.numElements*/
-            if(sizeof(rhs.container) > 0)
-                for (int i = 0; i >= sizeof(rhs.container); i++) {
-                    container[i] = rhs.container[i];
-                }
 
+            container = std::move(rhs.container);
             return *this;
         }
         stack <T>& operator = (stack <T>&& rhs)
@@ -70,10 +67,9 @@ namespace custom
             // MOVE ASSIGNMENT - PDF PG 334
             /* container <- move(rhs.container)*/
             container = std::move(rhs.container);
-            
             return *this;
         }
-        void swap(stack <T>& rhs) // -- Steve
+        void swap(stack <T>& rhs)
         {
             // SWAP - PDF PG 334
              /*FOR i < 0 … N
@@ -100,17 +96,16 @@ namespace custom
         const T& top() const { return container[size() - 1]; }
 
         //
-        // Insert -- Jon
+        // Insert
         //
 
         void push(const T& t) {
             // PDF PG 335
             container.push_back(t);
         }
-        void push(T&& t) { // THIS ONE LOOKS LIKE A MOVE PUSH!!!! Just now noticing....
-            // Steve: Working like a move.... Hmm, let's see
-            pop(); // remove top element
-            container.push_back(t); // replace it with this one
+        void push(T&& t) { // MOVE to top element
+            pop(); 
+            container.push_back(t); 
         }
 
        void pop()
@@ -124,7 +119,7 @@ namespace custom
        }
 
         //
-        // Status -- Steve
+        // Status
         //
         size_t  size() const {
             // PDF PG 336
