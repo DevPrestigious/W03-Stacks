@@ -40,20 +40,20 @@ namespace custom
         // Construct
         //
 
-                                                                            //////////////////////////////////////////////////////////////////////////////////////////
-        stack() { container.resize(0); }                                    // -- Alexander PDF PG 333  {  numElements <- 0 }                 DEFAULT CONSTRUCTOR
-        stack(const stack <T>& rhs) { *this = rhs; }                // -- Corbin PDF PG 333     {  *this <- rhs }                     COPY CONSTRUCTOR
-        stack(stack <T>&& rhs) { *this = std::move(rhs); }                     // -- Jon    PDF PG 333     {  *this <- move(rhs) }               MOVE CONSTRUCTOR
-        stack(const std::vector<T>& rhs) { container = rhs.container; }           // -- Jon    PDF PG 333     {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
-        stack(std::vector<T>&& rhs) { container = std::move(rhs.container); }    // -- Alex   PDF PG 333     {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
+                                                                                //////////////////////////////////////////////////////////////////////////////////////////
+        stack() { container.resize(0); }                                        // -- Alexander PDF PG 333  {  numElements <- 0 }                 DEFAULT CONSTRUCTOR
+        stack(const stack <T>& rhs) { *this = rhs; }                            // -- Corbin PDF PG 333     {  *this <- rhs }                     COPY CONSTRUCTOR
+        stack(stack <T>&& rhs) { *this = std::move(rhs); }                      // -- Jon    PDF PG 333     {  *this <- move(rhs) }               MOVE CONSTRUCTOR
+        stack(const std::vector<T>& rhs) { container = rhs.container; }         // -- Jon    PDF PG 333     {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
+        stack(std::vector<T>&& rhs) { container = std::move(rhs.container); }   // -- Alex   PDF PG 333     {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
         ~stack()
         {
             for (int i = 0; i < size(); i++)
             {
                 container.pop_back();
             }
-        }                       // -- Steve  Don't know     // Alexander: "I don't think anything needs to go here.                  DECONSTRUCTOR
-                                                                            //////////////////////////////////////////////////////////////////////////////////////////
+        }                                                                       // -- Steve  Don't know if we need  // Alexander: "I don't think anything needs to go here.  DECONSTRUCTOR
+                                                                                //////////////////////////////////////////////////////////////////////////////////////////
         //
         // Assign  -- Corbin
         //
