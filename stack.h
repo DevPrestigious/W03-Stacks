@@ -126,7 +126,8 @@ namespace custom
                IF not empty()
                --numElements*/
            if (!empty())
-               container[size() - 1] = NULL;
+               /*container[size() - 1] = NULL;*/
+               container.erase(container.begin() + (size()-1));
        }
 
         //
