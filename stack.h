@@ -55,6 +55,11 @@ namespace custom
 
         stack <T>& operator = (const stack <T>& rhs) // Steve: trying to get it going for swap, but ran into issues.
         {
+            
+            for (int i = 0; i >= sizeof(rhs.container[size()]); i++) {
+                container[i] = rhs.container[i];
+                container[size()] = rhs.container[size()];
+            }
             // COPY ASSIGNMENT - PDF PG 334
             /*FOR i < 0 … rhs.numElements
                 array[i] <- rhs.array[i]
