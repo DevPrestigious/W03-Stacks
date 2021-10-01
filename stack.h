@@ -46,9 +46,14 @@ namespace custom
         stack(stack <T>&& rhs) { *this = std::move(rhs); }                     // -- Jon    PDF PG 333     {  *this <- move(rhs) }               MOVE CONSTRUCTOR
         stack(const std::vector<T>& rhs) { container = rhs.container; }           // -- Jon    PDF PG 333     {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
         stack(std::vector<T>&& rhs) { container = std::move(rhs.container); }    // -- Alex   PDF PG 333     {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
-        ~stack(){};                       // -- Steve  Don't know     // Alexander: "I don't think anything needs to go here.                  DECONSTRUCTOR
+        ~stack()
+        {
+            for (int i = 0; i < size(); i++)
+            {
+                container.pop_back();
+            }
+        }                       // -- Steve  Don't know     // Alexander: "I don't think anything needs to go here.                  DECONSTRUCTOR
                                                                             //////////////////////////////////////////////////////////////////////////////////////////
-
         //
         // Assign  -- Corbin
         //
@@ -56,10 +61,11 @@ namespace custom
         stack <T>& operator = (const stack <T>& rhs) // Steve: trying to get it going for swap, but ran into issues.
         {
             
-            for (int i = 0; i >= sizeof(rhs.container[size()]); i++) {
+            for (int i = 0; i >= sizeof(rhs.container); i++) {
                 container[i] = rhs.container[i];
                 container[size()] = rhs.container[size()];
             }
+
             // COPY ASSIGNMENT - PDF PG 334
             /*FOR i < 0 … rhs.numElements
                 array[i] <- rhs.array[i]
