@@ -42,11 +42,11 @@ namespace custom
 
                                                                             //////////////////////////////////////////////////////////////////////////////////////////
         stack() { container.resize(0); }                                    // -- Alexander PDF PG 333  {  numElements <- 0 }                 DEFAULT CONSTRUCTOR
-        stack(const stack <T>& rhs) { container.resize(7); }                // -- Corbin PDF PG 333     {  *this <- rhs }                     COPY CONSTRUCTOR
-        stack(stack <T>&& rhs) { container.resize(7); }                     // -- Jon    PDF PG 333     {  *this <- move(rhs) }               MOVE CONSTRUCTOR
-        stack(const std::vector<T>& rhs) { container.resize(7); }           // -- Jon    PDF PG 333     {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
-        stack(std::vector<T>&& rhs) { container = move(rhs.container); }    // -- Alex   PDF PG 333     {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
-        ~stack() {                      }                                   // -- Steve  Don't know                                       DECONSTRUCTOR
+        stack(const stack <T>& rhs) { *this = rhs; }                // -- Corbin PDF PG 333     {  *this <- rhs }                     COPY CONSTRUCTOR
+        stack(stack <T>&& rhs) { *this = std::move(rhs); }                     // -- Jon    PDF PG 333     {  *this <- move(rhs) }               MOVE CONSTRUCTOR
+        stack(const std::vector<T>& rhs) { container = rhs.container; }           // -- Jon    PDF PG 333     {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
+        stack(std::vector<T>&& rhs) { container = std::move(rhs.container); }    // -- Alex   PDF PG 333     {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
+        ~stack(){};                       // -- Steve  Don't know     // Alexander: "I don't think anything needs to go here.                  DECONSTRUCTOR
                                                                             //////////////////////////////////////////////////////////////////////////////////////////
 
         //
@@ -55,7 +55,11 @@ namespace custom
 
         stack <T>& operator = (const stack <T>& rhs) 
         {
-
+            
+            for (int i = 0; i >= sizeof(rhs.container[size()]); i++) {
+                container[i] = rhs.container[i];
+                container[size()] = rhs.container[size()];
+            }
             // COPY ASSIGNMENT - PDF PG 334
             /*FOR i < 0 … rhs.numElements
                 array[i] <- rhs.array[i]
@@ -80,7 +84,8 @@ namespace custom
         {
             // MOVE ASSIGNMENT - PDF PG 334
             /* container <- move(rhs.container)*/
-
+            container = std::move(rhs.container);
+            
             return *this;
         }
         void swap(stack <T>& rhs) // -- Steve
@@ -99,6 +104,13 @@ namespace custom
                 tempdata[i++] = item;
             }*/
             
+            /* Alexander: "I tried my hand at using numElements instead."
+            for (int i = 0; i <= numElements; i++)
+            {
+                swap(container[i],rhs.container[i]);
+                swap(numElements, rhs.numElements);
+            }
+             */
         }
 
         //
@@ -109,6 +121,8 @@ namespace custom
             // PDF PG 335
             /*ASSERT not empty()
                 RETURN array[size() – 1]*/
+            //Let's make sure theres at least something in the array.
+            assert(!empty());
             return container[size() - 1];
         }
         const T& top() const { return container[size() - 1]; }
