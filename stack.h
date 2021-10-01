@@ -58,7 +58,7 @@ namespace custom
         // Assign  -- Corbin
         //
 
-        stack <T>& operator = (const stack <T>& rhs) // Steve: trying to get it going for swap, but ran into issues.
+        stack <T>& operator = (const stack <T>& rhs) 
         {
             
             for (int i = 0; i >= sizeof(rhs.container); i++) {
