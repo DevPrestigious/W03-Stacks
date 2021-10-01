@@ -39,14 +39,13 @@ namespace custom
         //
         // Construct
         //
-
                                                                                 //////////////////////////////////////////////////////////////////////////////////////////
         stack() { container.resize(0); }                                        // -- Alexander PDF PG 333  {  numElements <- 0 }                 DEFAULT CONSTRUCTOR
         stack(const stack <T>& rhs) { *this = rhs; }                            // -- Corbin PDF PG 333     {  *this <- rhs }                     COPY CONSTRUCTOR
         stack(stack <T>&& rhs) { *this = std::move(rhs); }                      // -- Jon    PDF PG 333     {  *this <- move(rhs) }               MOVE CONSTRUCTOR
         stack(const std::vector<T>& rhs) { container = rhs.container; }         // -- Jon    PDF PG 333     {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
         stack(std::vector<T>&& rhs) { container = std::move(rhs.container); }   // -- Alex   PDF PG 333     {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
-        ~stack() { for (int i = 0; i < size(); i++) pop(); }                    // -- Seemingly irrelevant.                                      DECONSTRUCTOR
+        ~stack() { for (int i = 0; i < size(); i++) pop(); }                    // -- Seemingly irrelevant, but works                             DECONSTRUCTOR
                                                                                 //////////////////////////////////////////////////////////////////////////////////////////
         //
         // Assign
@@ -108,15 +107,15 @@ namespace custom
             container.push_back(t); 
         }
 
-       void pop()
-       {
-          // PDF PG 336
-           /*stack.pop()
-               IF not empty()
-               --numElements*/
-           if (!empty())
-               container.erase(container.begin() + (size()-1));
-       }
+        void pop()
+        {
+        // PDF PG 336
+        /*stack.pop()
+        IF not empty()
+         --numElements*/
+        if (!empty())
+            container.erase(container.begin() + (size()-1));
+        }
 
         //
         // Status
@@ -135,10 +134,7 @@ namespace custom
 #else
     private:
 #endif
-
-        
         std::vector<T> container;  // underlying container
-        //int numElements = sizeof(container); // Can't use
     };
 
 
