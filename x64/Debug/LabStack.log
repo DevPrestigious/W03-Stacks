@@ -1,1 +1,26 @@
-﻿  LabStack.vcxproj -> D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\x64\Debug\LabStack.exe
+﻿  testStack.cpp
+D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(49,1): error C2679: binary '=': no operator found which takes a right-hand operand of type 'int' (or there is no acceptable conversion)
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vector(1222,36): message : could be 'std::vector<T,std::allocator<T>> &std::vector<T,std::allocator<T>>::operator =(std::initializer_list<_Ty>)'
+          with
+          [
+              T=Spy,
+              _Ty=Spy
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vector(1214,36): message : or       'std::vector<T,std::allocator<T>> &std::vector<T,std::allocator<T>>::operator =(const std::vector<T,std::allocator<T>> &)'
+          with
+          [
+              T=Spy
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vector(702,36): message : or       'std::vector<T,std::allocator<T>> &std::vector<T,std::allocator<T>>::operator =(std::vector<T,std::allocator<T>> &&) noexcept'
+          with
+          [
+              T=Spy
+          ]
+D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(49,1): message : while trying to match the argument list '(std::vector<T,std::allocator<T>>, int)'
+          with
+          [
+              T=Spy
+          ]
+D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\stack.h(49): message : while compiling class template member function 'custom::stack<Spy>::~stack(void)'
+D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\testStack.h(93): message : see reference to function template instantiation 'custom::stack<Spy>::~stack(void)' being compiled
+D:\OneDrive - BYU-Idaho\BYUI\CS 235 Data Structures (CSE 232)\Week 3\w03Stacks\testStack.h(93): message : see reference to class template instantiation 'custom::stack<Spy>' being compiled
