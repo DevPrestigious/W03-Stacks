@@ -46,13 +46,7 @@ namespace custom
         stack(stack <T>&& rhs) { *this = std::move(rhs); }                      // -- Jon    PDF PG 333     {  *this <- move(rhs) }               MOVE CONSTRUCTOR
         stack(const std::vector<T>& rhs) { container = rhs.container; }         // -- Jon    PDF PG 333     {  container <- rhs.container }       COPY INITIALIZE CONSTRUCTOR
         stack(std::vector<T>&& rhs) { container = std::move(rhs.container); }   // -- Alex   PDF PG 333     {  container <- move(rhs.container) } MOVE INITIALIZE CONSTRUCTOR
-        ~stack()
-        {
-            for (int i = 0; i < size(); i++)
-            {
-                container.pop_back();
-            }
-        }                                                                       // -- Seemingly irrelevant.                                      DECONSTRUCTOR
+        ~stack() { for (int i = 0; i < size(); i++) pop(); }                    // -- Seemingly irrelevant.                                      DECONSTRUCTOR
                                                                                 //////////////////////////////////////////////////////////////////////////////////////////
         //
         // Assign  -- Corbin
