@@ -52,7 +52,7 @@ namespace custom
             {
                 container.pop_back();
             }
-        }                                                                       // -- Steve  Don't know if we need  // Alexander: "I don't think anything needs to go here.  DECONSTRUCTOR
+        }                                                                       // -- Seemingly irrelevant.                                      DECONSTRUCTOR
                                                                                 //////////////////////////////////////////////////////////////////////////////////////////
         //
         // Assign  -- Corbin
@@ -60,29 +60,14 @@ namespace custom
 
         stack <T>& operator = (const stack <T>& rhs) 
         {
-            
-            for (int i = 0; i >= sizeof(rhs.container); i++) {
-                container[i] = rhs.container[i];
-                container[size()] = rhs.container[size()];
-            }
-
             // COPY ASSIGNMENT - PDF PG 334
             /*FOR i < 0 … rhs.numElements
                 array[i] <- rhs.array[i]
                 numElements <- rhs.numElements*/
-
-            /*for (int i = 0; i < size(); i++) {
-                container.pop_back();
-            }
-            container = &rhs.container;*/
-            //size_t max = (rhs.container.size() > container.size() ? rhs.container.size() : container.size());
-
-            //for (int i = 0; i < rhs.container.size()-1; i++) {
-            //    container.push_back(&rhs.container[size()-1]);
-            //    rhs.container.pop_back();
-            //    //push(rhs.container[i]);
-            //    //container[i] = rhs.container[i];
-            //}
+            if(sizeof(rhs.container) > 0)
+                for (int i = 0; i >= sizeof(rhs.container); i++) {
+                    container[i] = rhs.container[i];
+                }
 
             return *this;
         }
@@ -100,10 +85,10 @@ namespace custom
              /*FOR i < 0 … N
                 swap(array[i], rhs.array[i])
                 swap(numElements, rhs.numElements) */
-
-            /*T tempdata = container;
-            rhs.container = this.container;
-            this.container = tempdata;*/
+            
+            std::vector <T> tempdata = std::move(rhs.container);
+            rhs.container = std::move(container);
+            container = std::move(tempdata);
             /*int i = 0;
             for (T item : rhs)
             {
