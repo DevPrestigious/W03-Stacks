@@ -81,7 +81,7 @@ namespace custom
         }
         void swap(stack <T>& rhs) // -- Steve
         {
-            // MOVE ASSIGNMENT - PDF PG 334
+            // SWAP - PDF PG 334
              /*FOR i < 0 … N
                 swap(array[i], rhs.array[i])
                 swap(numElements, rhs.numElements) */
@@ -89,19 +89,6 @@ namespace custom
             std::vector <T> tempdata = std::move(rhs.container);
             rhs.container = std::move(container);
             container = std::move(tempdata);
-            /*int i = 0;
-            for (T item : rhs)
-            {
-                tempdata[i++] = item;
-            }*/
-            
-            /* Alexander: "I tried my hand at using numElements instead."
-            for (int i = 0; i <= numElements; i++)
-            {
-                swap(container[i],rhs.container[i]);
-                swap(numElements, rhs.numElements);
-            }
-             */
         }
 
         //
@@ -127,7 +114,9 @@ namespace custom
             container.push_back(t);
         }
         void push(T&& t) { // THIS ONE LOOKS LIKE A MOVE PUSH!!!! Just now noticing....
-            container.push_back(t);
+            // Steve: Working like a move.... Hmm, let's see
+            pop(); // remove top element
+            container.push_back(t); // replace it with this one
         }
 
        void pop()
