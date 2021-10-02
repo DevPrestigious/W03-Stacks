@@ -136,8 +136,4 @@ namespace custom
         std::vector<T> container;  // underlying container
     };
 
-
-
 } // custom namespace
-
-
