@@ -103,18 +103,17 @@ namespace custom
             container.push_back(t);
         }
         void push(T&& t) { // MOVE to top element
-            pop(); 
-            container.push_back(t); 
+            container.push_back(std::move(t));
         }
 
         void pop()
         {
-        // PDF PG 336
-        /*stack.pop()
-        IF not empty()
-         --numElements*/
-        if (!empty())
-            container.erase(container.begin() + (size()-1));
+            // PDF PG 336
+            /*stack.pop()
+            IF not empty()
+             --numElements*/
+            if (!empty())
+                container.erase(container.begin() + (size()-1));
         }
 
         //
